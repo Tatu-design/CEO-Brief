@@ -1,0 +1,70 @@
+name: CI — Verificación automática
+
+# Se ejecuta en cada push y en cada Pull Request
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancela ejecuciones anteriores si hay un nuevo push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Adaptar este job al stack del proyecto ────────────────────────────────
+  # Este es un ejemplo genérico. Claude lo configurará para el stack real.
+  verify:
+    name: Verificación
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # Ejemplo para proyectos Node.js — eliminar si no aplica
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+        # Descomenta si usas Node.js
+
+      # Ejemplo para proyectos Python — eliminar si no aplica
+      # - name: Setup Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: |
+          echo "Configurar el comando de instalación para este proyecto"
+          # Ejemplos:
+          # npm install
+          # pip install -r requirements.txt
+          # pnpm install
+
+      - name: Verificar que el proyecto compila/arranca
+        run: |
+          echo "Configurar la verificación para este proyecto"
+          # Ejemplos:
+          # npm run build
+          # python -m pytest
+          # pnpm type-check
+
+  # ── Auto-merge de PRs cuando CI pasa ─────────────────────────────────────
+  # Descomenta si quieres que los PRs se mergeen automáticamente
+  # auto-merge:
+  #   name: Auto-merge PR
+  #   runs-on: ubuntu-latest
+  #   needs: verify
+  #   if: github.event_name == 'pull_request'
+  #   permissions:
+  #     contents: write
+  #     pull-requests: write
+  #   steps:
+  #     - name: Merge PR
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       run: gh pr merge "${{ github.event.pull_request.number }}" --squash --delete-branch

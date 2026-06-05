@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth *)",
+      "PowerShell(git clone https://github.com/guillevila/claude-project-template \"c:\\\\Users\\\\usuario\\\\Desktop\\\\CEO Breaf\" 2>&1)",
+      "Bash(git --version)",
+      "Bash(git clone *)",
+      "Read(//tmp/**)",
+      "Read(//tmp/ceo-brief-template/**)",
+      "Bash(cp -r /tmp/ceo-brief-template/.claude/. \"/c/Users/usuario/Desktop/CEO Breaf/.claude/\" && echo \"OK .claude copied\")"
+    ]
+  }
+}
