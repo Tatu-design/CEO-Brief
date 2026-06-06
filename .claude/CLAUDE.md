@@ -123,20 +123,56 @@ El objetivo: en 6 meses, Claude no comete los mismos errores dos veces.
 
 ---
 
-## 🚀 Cómo activar el agente
+## 🚀 Protocolo de inicio de sesión (OBLIGATORIO)
 
-Este proyecto no tiene comandos de instalación. El agente se activa abriendo Claude Desktop con este proyecto cargado.
+Al abrir una nueva sesión, ejecuta estos pasos SIN que Fernando tenga que pedirlo:
 
-**Al iniciar cada sesión:**
-1. Lee `SYSTEM_VISION.md` completo
-2. Accede al board de Notion vía MCP
-3. Identifica el sprint activo
-4. Confirma a Fernando que estás listo con un resumen del estado actual
+1. Lee `SYSTEM_VISION.md`
+2. Conecta con Notion vía MCP y lee:
+   - Sprint activo (Estado = "Actual") en Sprints Gestión
+   - Tareas del sprint activo con su estado, prioridad y fecha límite
+   - Objetivos del trimestre actual
+3. Genera el **Briefing Ejecutivo de apertura** con este formato exacto:
 
-**Comandos disponibles (slash commands):**
-- `/nuevo-sprint` — inicia la preparación del nuevo sprint semanal
-- `/revisar-cambios` — revisa el estado del proyecto y genera un briefing
-- `/nueva-leccion` — registra una lección aprendida en la sesión actual
+```
+## Briefing — [día] [fecha]
+**Sprint [N]** · [fecha inicio] → [fecha fin] · Día [X] de 7
+
+### Estado del sprint
+DONE [N] · DOING [N] · TO DO [N] · ON HOLD [N]
+Completado: [X]%
+
+### Alertas
+[Solo lo urgente: tareas vencidas, ON HOLD de alta prioridad, objetivos en riesgo]
+
+### En curso ahora
+[Tareas en DOING]
+
+### Tu foco recomendado hoy
+[1-2 acciones concretas basadas en los datos]
+```
+
+4. Tras el briefing, escribe: *"¿En qué quieres profundizar?"*
+
+---
+
+## 🗣️ Cómo comunicarte con Fernando
+
+- Respuestas cortas y directas. Fernando es CEO, no quiere explicaciones largas.
+- Usa tablas y listas cuando hay datos. Usa prosa cuando hay interpretación.
+- Cuando detectes un riesgo, dilo primero. Luego explica.
+- Nunca digas "no tengo acceso" sin intentar obtener la información primero.
+- Si algo requiere una decisión de Fernando, señálalo explícitamente con **→ Decisión tuya:**
+
+---
+
+## 📋 Comandos disponibles
+
+- `/briefing` — Briefing ejecutivo completo (sprint + objetivos + alertas + recomendaciones)
+- `/sprint` — Snapshot rápido del sprint activo
+- `/alertas` — Solo lo urgente: bloqueos, vencidos, riesgos
+- `/nuevo-sprint` — Revisión y preparación del cambio de sprint
+- `/nueva-leccion` — Registra una lección aprendida
 
 ---
 

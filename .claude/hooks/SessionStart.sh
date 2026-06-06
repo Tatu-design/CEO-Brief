@@ -1,53 +1,25 @@
 #!/bin/bash
-# SessionStart.sh — Se ejecuta automáticamente al abrir una sesión de Claude Code
-# Muestra el estado actual del proyecto para que Claude arranque con contexto
+# SessionStart.sh — Agente Ejecutivo de Antifragil
+# Proporciona contexto inicial para que Claude arranque directamente con el briefing
 
-echo "═══════════════════════════════════════════════════════════════"
-echo "  PROYECTO — Estado al iniciar sesión"
-echo "═══════════════════════════════════════════════════════════════"
+echo "================================================================"
+echo "  AGENTE EJECUTIVO ANTIFRAGIL"
+echo "  $(date '+%A, %d de %B de %Y')"
+echo "================================================================"
 echo ""
-
-# Rama actual
-BRANCH=$(git branch --show-current 2>/dev/null || echo "sin-git")
-echo "📍 Rama actual: $BRANCH"
+echo "Proyecto : CEO Brief — Chief of Staff Digital"
+echo "Usuario  : Fernando Campos (CEO)"
+echo "Acceso   : Notion MCP conectado"
 echo ""
-
-# Últimos commits
-echo "📝 Últimos 3 commits:"
-git log --oneline -3 2>/dev/null | sed 's/^/   /' || echo "   (sin historial)"
+echo "INSTRUCCION AUTOMATICA:"
+echo "Lee SYSTEM_VISION.md y ejecuta el protocolo de inicio"
+echo "de sesion definido en .claude/CLAUDE.md (briefing ejecutivo)."
 echo ""
-
-# Archivos modificados
-CHANGED=$(git status --short 2>/dev/null | wc -l | tr -d ' ')
-if [ "$CHANGED" -gt "0" ]; then
-  echo "⚠️  Archivos modificados sin commitear: $CHANGED"
-  git status --short 2>/dev/null | head -5 | sed 's/^/    /'
-  if [ "$CHANGED" -gt "5" ]; then
-    echo "   ... y $((CHANGED - 5)) más"
-  fi
-else
-  echo "✅ Todo commiteado — rama limpia"
-fi
+echo "Comandos disponibles:"
+echo "  /briefing        — Briefing ejecutivo completo"
+echo "  /sprint          — Snapshot rapido del sprint activo"
+echo "  /alertas         — Solo alertas criticas"
+echo "  /nuevo-sprint    — Apertura/cierre de sprint semanal"
+echo "  /publicar-notion — Publica el briefing en Notion para el equipo"
 echo ""
-
-# Lecciones aprendidas
-LOG=".claude/skills/lessons-learned/log.md"
-if [ -f "$LOG" ]; then
-  COUNT=$(grep -c "^## " "$LOG" 2>/dev/null || echo "0")
-  echo "🧠 Lecciones aprendidas registradas: $COUNT"
-  echo ""
-  echo "   Última lección:"
-  grep "^## " "$LOG" 2>/dev/null | tail -1 | sed 's/^/   /'
-else
-  echo "🧠 Sin lecciones registradas aún"
-fi
-echo ""
-
-# Recordatorios
-echo "📚 Recordatorios:"
-echo "   • Lee SYSTEM_VISION.md si no lo has hecho ya"
-echo "   • Lee lessons-learned/log.md antes de empezar"
-echo "   • Pushback antes de ejecutar peticiones subóptimas"
-echo "   • Registra lecciones inmediatamente tras correcciones"
-echo ""
-echo "═══════════════════════════════════════════════════════════════"
+echo "================================================================"

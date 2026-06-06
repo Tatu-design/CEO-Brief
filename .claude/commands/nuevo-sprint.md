@@ -1,42 +1,47 @@
 ---
 name: nuevo-sprint
-description: Inicia un nuevo sprint de trabajo. Crea la estructura de seguimiento y define los objetivos con el dueño del proyecto.
+description: Cierre del sprint que termina y apertura del siguiente. Revisa que quedo pendiente, que se mueve al proximo sprint y cual es el foco de la semana.
 ---
 
 # Comando: /nuevo-sprint
 
-Cuando el usuario invoca este comando:
+Se ejecuta los lunes al inicio de cada semana para hacer el cierre del sprint anterior y la apertura del nuevo.
 
-1. Pregunta: *"¿Cuál es el objetivo principal de este sprint? ¿Qué tiene que funcionar al final?"*
-2. Pregunta: *"¿Cuánto tiempo tenemos? (días o semanas)"*
-3. Revisa las decisiones abiertas en SYSTEM_VISION.md — si alguna bloquea el sprint, avisar
-4. Crea el archivo `docs/sprints/sprint-NNN.md` con la estructura
-5. Confirma el plan con el usuario antes de empezar
+## Proceso
 
-## Estructura del archivo de sprint
+### Paso 1 — Cierre del sprint anterior
+Lee en Notion el ultimo sprint (Estado = "Ultimo" o el mas reciente con Estado = "Anteriores"):
+- Cuantas tareas quedaron sin completar (no DONE/CANCELLED)
+- Cuales eran de alta prioridad y no se cerraron
+- Porcentaje final de completado
 
-```markdown
-# Sprint NNN — [Objetivo principal]
+### Paso 2 — Estado del sprint nuevo
+Lee el sprint con Estado = "Actual":
+- Fechas del sprint
+- Tareas ya asignadas
+- Distribucion por responsable
 
-**Fecha inicio:** YYYY-MM-DD
-**Fecha objetivo:** YYYY-MM-DD
-**Objetivo:** [Una frase del qué tiene que funcionar]
+### Paso 3 — Genera el resumen de apertura
 
-## Tareas
-
-- [ ] [Tarea 1]
-- [ ] [Tarea 2]
-- [ ] [Tarea 3]
-
-## Decisiones abiertas que bloquean
-
-- [Si las hay]
-
-## Notas y contexto
-
-[Lo relevante para este sprint]
-
-## Resultado final
-
-[Se rellena al cerrar el sprint]
 ```
+## Apertura Sprint [N] — [fecha inicio] al [fecha fin]
+
+### Cierre del Sprint [N-1]
+Completado: X% (N/N tareas)
+Tareas pendientes que se arrastran: [lista con prioridad]
+
+### Sprint [N] — Lo que hay planificado
+Total tareas: [N]
+Por responsable:
+• [Persona]: N tareas
+• [Persona]: N tareas
+
+### Foco estrategico esta semana
+[Que objetivos estrategicos avanza este sprint segun los OKRs]
+
+### Decisiones necesarias para empezar bien
+[Si hay tareas bloqueadas o sin responsable asignado]
+```
+
+### Paso 4 — Pregunta de alineacion
+Termina preguntando: "Que quieres que el equipo priorice esta semana si hay conflicto entre tareas?"
