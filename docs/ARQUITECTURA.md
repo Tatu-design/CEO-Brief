@@ -40,31 +40,69 @@ Claude + MCP ──► Notion (objetivos, KR, tareas)      │
 
 ## Estructura de datos en Notion
 
-Todo el sistema operativo de Antifrágil sigue esta jerarquía:
+La jerarquía operativa real de Antifrágil es:
 
 ```
 Objetivos
-  └── Key Results (KR)
-        └── Tareas
+  └── Proyectos (= Key Results en la nomenclatura interna: OBX-KR2, OB7-KR6...)
+        └── Tareas Gestión  ←──── Sprints Gestión (dimensión transversal)
 ```
 
-### Propiedades de cada elemento
+### Base de datos: Objetivos
+`collection://1d70a899-f857-81ce-99d0-000bc35956e5`
 
-| Propiedad    | Tipo     | Descripción                                     |
-| ------------ | -------- | ----------------------------------------------- |
-| Responsable  | Persona  | Quién es el dueño del elemento                  |
-| Prioridad    | Select   | Nivel de importancia                            |
-| Fechas       | Date     | Fecha inicio y fecha límite                     |
-| Sprint       | Relation | Sprint al que pertenece (duración: 1 semana)    |
-| Estado       | Select   | Backlog / To Do / Doing / On Hold / Done        |
-| Colaboradores| Persons  | Personas que apoyan al responsable              |
+| Propiedad   | Tipo     | Valores posibles                                    |
+| ----------- | -------- | --------------------------------------------------- |
+| Nombre      | Título   | —                                                   |
+| Estado      | Status   | Sin empezar / En progreso / Listo / Cancelado       |
+| Prioridad   | Select   | Baja / Media / Alta                                 |
+| Cuarto      | Select   | Q1 2026 / Q2 2026 / Q3 2026 / ...                  |
+| Líder       | Persona  | Responsable del objetivo                            |
+| Colaborador | Personas | Apoyo al líder                                      |
+| Proyectos   | Relación | KRs asociados (base de datos Proyectos)             |
+| Blocked by  | Relación | Objetivos que lo bloquean                           |
+
+### Base de datos: Proyectos (Key Results)
+`collection://1d70a899-f857-818d-871f-000b9832d4ee`
+
+Cada KR se nombra con la convención `OBX-KRN: descripción` (ej: `OB7-KR6: Sistema de comunicación interna`).
+Relaciona Objetivos con Tareas Gestión.
+
+### Base de datos: Tareas Gestión
+`collection://829562c1-b65a-4558-aa01-16c1e74c638d`
+
+| Propiedad      | Tipo     | Valores posibles                             |
+| -------------- | -------- | -------------------------------------------- |
+| Título         | Título   | —                                            |
+| Estado         | Status   | BACKLOG / TO DO / DOING / ON HOLD / DONE / CANCELLED |
+| Responsable    | Persona  | Dueño de la tarea                            |
+| Prioridad      | Select   | ⭕Alta / Media / Baja                        |
+| Fecha límite   | Fecha    | —                                            |
+| Sprint         | Relación | Sprint al que pertenece (límite: 1)          |
+| Proyecto Nuevo | Relación | KR al que pertenece                          |
+| Subtareas      | Relación | Tareas hijas (autorreferencial)              |
+| Tarea principal| Relación | Tarea padre (autorreferencial)               |
+| Bloqueado por  | Relación | Tareas que la bloquean                       |
+| ID de la tarea | Auto-ID  | Identificador numérico único                 |
+
+### Base de datos: Sprints Gestión
+`collection://c0aab352-6dd1-421e-b29a-61bad82436fa`
+
+| Propiedad          | Tipo    | Valores / descripción                                  |
+| ------------------ | ------- | ------------------------------------------------------ |
+| Nombre             | Título  | —                                                      |
+| Fechas             | Fecha   | Rango fecha inicio – fin del sprint                    |
+| ID de sprint       | Auto-ID | —                                                      |
+| Estado del sprint  | Status  | Actual / Siguiente / Futuro / Último / Anteriores      |
+| Tareas             | Relación| Tareas asignadas a este sprint                         |
+| Tareas completadas | Rollup  | % de tareas en estado DONE sobre el total              |
+| Total de tareas    | Rollup  | Número total de tareas del sprint                      |
 
 ### Ciclo de sprints
 
 - Duración: 1 semana
-- Inicio: lunes
-- Cierre: domingo
-- Revisión semanal: reunión de gestión del equipo directivo
+- Estado "Actual": sprint en curso (solo uno a la vez)
+- Revisión semanal: reunión de gestión del equipo directivo con transcripción
 
 ---
 
