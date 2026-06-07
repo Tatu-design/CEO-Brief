@@ -36,32 +36,57 @@
   "hooks": {
     "SessionStart": [
       {
-        "type": "command",
-        "command": "bash .claude/hooks/SessionStart.sh"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -File .claude/hooks/SessionStart.ps1"
+          }
+        ]
       }
     ],
     "PreToolUse": [
       {
-        "type": "command",
-        "command": "bash .claude/hooks/PreToolUse.sh"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -File .claude/hooks/PreToolUse.ps1"
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
-        "type": "command",
-        "command": "bash .claude/hooks/PostToolUse.sh"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -File .claude/hooks/PostToolUse.ps1"
+          }
+        ]
       }
     ],
     "Stop": [
       {
-        "type": "command",
-        "command": "bash .claude/hooks/Stop.sh"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -File .claude/hooks/Stop.ps1"
+          }
+        ]
       }
     ],
     "SubagentStart": [
       {
-        "type": "command",
-        "command": "python .claude/hooks/log-subagent-spawn.py"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -File .claude/hooks/log-subagent-spawn.ps1"
+          }
+        ]
       }
     ]
   }
