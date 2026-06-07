@@ -9,8 +9,9 @@ Consulta las transcripciones de reuniones de los últimos 7 días y genera un re
 
 ## 1. Busca en Google Drive
 
-- Busca archivos recientes con términos: "transcript", "transcripción", "Meet", "reunión", "recording"
-- Filtra los creados en los últimos 7 días
+- **Carpeta dedicada:** `📋 Transcripciones Reuniones` (ID: `1YY7NXOIEfv0t77GISymtvB7FMGfzKkXY`)
+- Ruta: Grupo Empresarial Antifrágil SL → 5. Operativa → 📋 Transcripciones Reuniones
+- Lista todos los archivos de esa carpeta creados en los últimos 7 días
 - Lee el contenido de cada uno
 
 ## 2. También busca en Notion
