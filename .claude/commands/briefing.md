@@ -7,6 +7,14 @@ description: Genera el briefing ejecutivo completo — sprint activo, objetivos,
 
 Cuando Fernando invoca este comando:
 
+## 0. Busca reuniones recientes en Google Drive
+
+Antes de leer Notion, busca en Google Drive transcripciones de reuniones de los últimos 7 días:
+- Busca archivos con términos como "Meet", "transcript", "transcripción", "reunión" creados en los últimos 7 días
+- Lee los que encuentres y extrae: decisiones tomadas, cambios de prioridad, bloqueos mencionados, acuerdos de equipo
+- Si no hay nada relevante para el sprint u objetivos, omite esta sección completamente
+- Si hay contenido relevante, guárdalo para incluirlo en la sección "Decisiones de reuniones"
+
 ## 1. Lee Notion en tiempo real
 
 **Sprint activo:**
@@ -66,6 +74,12 @@ Total: N tareas
 [2-3 acciones concretas para Fernando hoy/esta semana]
 
 → Decisión tuya: [Si hay algo que requiere su decisión]
+
+---
+
+### Decisiones de reuniones (solo si hay contenido relevante)
+[Solo incluir esta sección si hay transcripciones de los últimos 7 días con decisiones que afecten al sprint u objetivos]
+- 📋 [Fecha] Reunión: [nombre/tipo] → [decisión o acuerdo relevante]
 ```
 
 ## 3. Después del briefing

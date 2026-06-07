@@ -128,11 +128,12 @@ El objetivo: en 6 meses, Claude no comete los mismos errores dos veces.
 Al abrir una nueva sesión, ejecuta estos pasos SIN que Fernando tenga que pedirlo:
 
 1. Lee `SYSTEM_VISION.md`
-2. Conecta con Notion vía MCP y lee:
+2. Busca en Google Drive transcripciones de reuniones de los últimos 7 días (archivos tipo "Meet", "transcript", "transcripción")
+3. Conecta con Notion vía MCP y lee:
    - Sprint activo (Estado = "Actual") en Sprints Gestión
    - Tareas del sprint activo con su estado, prioridad y fecha límite
    - Objetivos del trimestre actual
-3. Genera el **Briefing Ejecutivo de apertura** con este formato exacto:
+4. Genera el **Briefing Ejecutivo de apertura** con este formato exacto:
 
 ```
 ## Briefing — [día] [fecha]
@@ -150,9 +151,12 @@ Completado: [X]%
 
 ### Tu foco recomendado hoy
 [1-2 acciones concretas basadas en los datos]
+
+### Decisiones de reuniones *(solo si hay transcripciones relevantes esta semana)*
+[Reuniones de Google Drive que impacten al sprint u objetivos]
 ```
 
-4. Tras el briefing, escribe: *"¿En qué quieres profundizar?"*
+5. Tras el briefing, escribe: *"¿En qué quieres profundizar?"*
 
 ---
 
@@ -168,9 +172,10 @@ Completado: [X]%
 
 ## 📋 Comandos disponibles
 
-- `/briefing` — Briefing ejecutivo completo (sprint + objetivos + alertas + recomendaciones)
+- `/briefing` — Briefing ejecutivo completo (sprint + objetivos + alertas + recomendaciones + reuniones)
 - `/sprint` — Snapshot rápido del sprint activo
 - `/alertas` — Solo lo urgente: bloqueos, vencidos, riesgos
+- `/reuniones` — Resumen de reuniones de la semana desde Google Drive y Notion
 - `/nuevo-sprint` — Revisión y preparación del cambio de sprint
 - `/nueva-leccion` — Registra una lección aprendida
 
