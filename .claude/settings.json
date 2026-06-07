@@ -14,6 +14,12 @@
       "rm -rf /"
     ],
     "allow": [
+      "Bash(*)",
+      "PowerShell(*)",
+      "mcp__claude_ai_Notion__*",
+      "mcp__claude_ai_Gmail__*",
+      "mcp__claude_ai_Google_Calendar__*",
+      "mcp__claude_ai_Google_Drive__*",
       "Bash(git status)",
       "Bash(git log*)",
       "Bash(git diff*)",
