@@ -125,14 +125,26 @@ El objetivo: en 6 meses, Claude no comete los mismos errores dos veces.
 
 ## 🚀 Protocolo de inicio de sesión (OBLIGATORIO)
 
+> ⏸️ **PAUSADO desde 2026-09-04 por decisión de Fernando.**
+> No ejecutar este protocolo ni generar el briefing al iniciar sesión.
+> El agente solo genera el briefing / consulta Notion / busca en Drive cuando
+> Fernando lo pide explícitamente (`/briefing`, `/sprint`, etc.).
+> Para reactivar: eliminar este aviso y restaurar el bloque "INSTRUCCION AUTOMATICA"
+> en `.claude/hooks/SessionStart.ps1`.
+
 Al abrir una nueva sesión, ejecuta estos pasos SIN que Fernando tenga que pedirlo:
 
 1. Lee `SYSTEM_VISION.md`
 2. Busca en Google Drive transcripciones de reuniones de los últimos 7 días (archivos tipo "Meet", "transcript", "transcripción")
-3. Conecta con Notion vía MCP y lee:
+3. Determina el **trimestre activo** siguiendo este orden:
+   - Primero: comprueba si existe un override en memoria (`quarter_override`). Si existe y la fecha actual aún no ha alcanzado ese trimestre de forma natural, úsalo.
+   - Si no hay override: calcula desde `currentDate` → Ene-Mar = Q1, Abr-Jun = Q2, Jul-Sep = Q3, Oct-Dic = Q4, formato `"Q{N} {AÑO}"` (ej: `"Q3 2026"`).
+   - Si Fernando dice *"estamos en QX"* en cualquier momento, guarda `quarter_override` en memoria con el valor indicado.
+
+4. Conecta con Notion vía MCP y lee:
    - Sprint activo (Estado = "Actual") en Sprints Gestión
    - Tareas del sprint activo con su estado, prioridad y fecha límite
-   - Objetivos del trimestre actual
+   - Objetivos **filtrando `Cuarto = trimestre activo`** — nunca mostrar objetivos de trimestres anteriores
 4. Genera el **Briefing Ejecutivo de apertura** con este formato exacto:
 
 ```
@@ -156,7 +168,7 @@ Completado: [X]%
 [Reuniones de Google Drive que impacten al sprint u objetivos]
 ```
 
-5. Tras el briefing, escribe: *"¿En qué quieres profundizar?"*
+6. Tras el briefing, escribe: *"¿En qué quieres profundizar?"*
 
 ---
 
